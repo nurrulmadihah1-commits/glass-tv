@@ -12,6 +12,13 @@
         android:layout_height="match_parent"
         android:alpha="0" />
 
+    <!-- Light rain over the wallpaper, behind everything else (theme key "rain"). -->
+    <com.gathin.tvhome.RainView
+        android:id="@+id/rain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <!-- Top shelf: the place's name, its country and what it is about, positioned above the dock in code.
          The width is capped in code to a share of the space between the side paddings, so the
          description wraps in a column instead of running the width of the screen. -->

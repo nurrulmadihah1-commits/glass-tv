@@ -79,4 +79,9 @@
          tiles that zoom without overshoot, shorter fades and no tile entrance when Home comes back. Set it
          here or with "reduced_motion": true in a theme's config.json; false keeps the normal motion. -->
     <bool name="reduced_motion">false</bool>
+
+    <!-- Light rain: thin drops falling over the wallpaper, behind the tiles. Drawn only while Home is in
+         front; with reduced_motion it uses half the drops at a lower frame rate. Set it here or with
+         "rain": false in a theme's config.json to switch it off. -->
+    <bool name="rain">true</bool>
 </resources>

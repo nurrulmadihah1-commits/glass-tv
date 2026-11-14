@@ -175,6 +175,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final java.util.concurrent.ExecutorService wallDecoder = java.util.concurrent.Executors.newSingleThreadExecutor();
     private long wallShownAt;
     private android.widget.ImageView wallView;
+    private RainView rain;
     private android.graphics.Bitmap wallBitmap;
     /** Settings kept for the places refresh, which runs after onCreate. */
     private Config config;
@@ -271,6 +272,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         else if (cfg.wallpaper != null && !placesMode) setWallpaper(decodeWallpaper(cfg.wallpaper), false);
         glass = findViewById(R.id.glass);
         ambient = findViewById(R.id.ambient);
+        rain = findViewById(R.id.rain);
+        rain.configure(cfg.rain, reducedMotion);
         Backdrop.setWorker(wallDecoder, handler);
         heroShelf = findViewById(R.id.heroShelf);
         heroName = findViewById(R.id.heroName);
@@ -672,6 +675,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         updateWifiLabel();
         updateInputsButton();
         startWallpaperRotation();
+        rain.setRunning(true);
         handler.postDelayed(minuteTick, MINUTE_MS);
         handler.removeCallbacks(cacheClean);
         handler.postDelayed(cacheClean, CacheCleaner.IDLE_MS);
@@ -760,6 +764,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         unregisterReceiver(packageReceiver);
         handler.removeCallbacks(minuteTick);
         handler.removeCallbacks(wallTick);
+        rain.setRunning(false);
         // Nothing of ours stays on screen over another app; an undecided prompt simply returns next time.
         if (cardPrompt != null) cardPrompt.dismiss();
         if (openPopup != null) openPopup.dismiss();
