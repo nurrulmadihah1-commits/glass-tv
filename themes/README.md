@@ -33,6 +33,7 @@ is ignored, and a file that doesn't parse is ignored as a whole, so a theme can 
 | `shamsi_date` | bool | Show the Solar Hijri date above the Gregorian one |
 | `module_cards` | bool | Look for module cards and ask about them (`true`); `false` turns the feature off |
 | `reduced_motion` | bool | Calmer motion for weak GPUs: stiff highlight spring, no tile overshoot, short fades, no entrance replay |
+| `rain` | bool | Light rain drops falling over the wallpaper, behind the tiles (on by default); `false` switches it off. Drawn only while Home is in front |
 | `vpn_app` | string | App the network pill opens when a VPN is configured; also shows a red "VPN off" badge while no VPN is up |
 | `show_home_settings_shortcut` | bool | The "Default home" tile, where the TV has a home picker |
 | `show_network_pill` | bool | The Wi-Fi / Ethernet pill in the top bar; `false` hides it |
@@ -59,6 +60,17 @@ Android 10 is the known case. The default, `false`, keeps the normal motion.
 
 ```json
 { "reduced_motion": true }
+```
+
+## Rain
+
+Thin, slanted drops fall over the wallpaper, behind the clock and the tiles: near drops longer and
+brighter, far ones short and faint. It is on by default and costs little: about 70 lines a frame on a
+1080p screen, no pictures, nothing allocated while it runs, and it stops as soon as another app is in
+front. With `"reduced_motion": true` it uses half the drops at about 30 frames a second. To switch it off:
+
+```json
+{ "rain": false }
 ```
 
 ## Adding a theme
